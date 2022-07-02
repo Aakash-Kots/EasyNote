@@ -32,6 +32,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E10A37028702D8800455245 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0E1D0104286F75D1005779B0 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +58,7 @@
 		0E1D010F286F75D1005779B0 /* EasyNote */ = {
 			isa = PBXGroup;
 			children = (
+				0E10A37028702D8800455245 /* Views */,
 				0E1D0110286F75D1005779B0 /* EasyNoteApp.swift */,
 				0E1D0112286F75D1005779B0 /* ContentView.swift */,
 				0E1D0114286F75D1005779B0 /* Assets.xcassets */,

@@ -13,6 +13,9 @@ struct ContentView: View {
     @State private var password: String = ""
     @State private var fullName: String = ""
     @State private var confirmPassword: String = ""
+    @State private var alertTitle: String = ""
+    @State private var alertMessage: String = ""
+    @State private var showingAlert: Bool = false
     var body: some View {
         NavigationView {
                         Form {
@@ -25,30 +28,35 @@ struct ContentView: View {
                                 SecureField("Confirm your password",text: $confirmPassword)
                             }
                             Section() {
-                                Button(role: .cancel) {
-                                    // Sign Up
+                                Button {
+                                    print("Sign Up!")
                                 } label: {
                                     Text("Sign Up")
-                                        .bold()
+                                        .font(.title3)
+                                        
                                 }
-            
-            
-            
                             }
                         }
                         .navigationTitle("Welcome to EasyNote")
                         .toolbar {
                             Button {
-                                print("Keyboard Down")
+                                // Keyboard down
                             } label: {
                                 Image(systemName: "keyboard.chevron.compact.down")
                             }
 
                         }
+                        .alert(alertTitle, isPresented: $showingAlert) {
+                            Button("OK") { }
+                        } message: {
+                            Text(alertMessage)
+                        }
+
         }
         
         
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
