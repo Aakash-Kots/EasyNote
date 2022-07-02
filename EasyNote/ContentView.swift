@@ -8,55 +8,60 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+   
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var fullName: String = ""
-    @State private var confirmPassword: String = ""
-    @State private var alertTitle: String = ""
-    @State private var alertMessage: String = ""
-    @State private var showingAlert: Bool = false
     var body: some View {
-        NavigationView {
-                        Form {
-                            Section("Personal Details") {
-                                TextField("Enter your full name", text: $fullName)
-                                TextField("Enter your email", text: $email)
-                            }
-                            Section("Password") {
-                                SecureField("Enter your password", text: $password)
-                                SecureField("Confirm your password",text: $confirmPassword)
-                            }
-                            Section() {
-                                Button {
-                                    print("Sign Up!")
-                                } label: {
-                                    Text("Sign Up")
-                                        .font(.title3)
-                                        
-                                }
-                            }
-                        }
-                        .navigationTitle("Welcome to EasyNote")
-                        .toolbar {
-                            Button {
-                                // Keyboard down
-                            } label: {
-                                Image(systemName: "keyboard.chevron.compact.down")
-                            }
+        ZStack {
+            Color.blue
+                .ignoresSafeArea()
+            Circle()
+                .scale(1.8)
+                .fill(.gray.opacity(0.7))
+                .shadow(color: .black.opacity(0.2), radius: 20, x: 0, y: 0)
+            Circle()
+                .scale(1.5)
+                .fill(.white)
+            
+            VStack(spacing: 20) {
+                Text("LOGIN!")
+                    .font(.largeTitle)
+                    .bold()
+                TextField("Email", text: $email)
+                    .frame(width: 300, height: 50)
+                    .padding(.horizontal)
+                    .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray.opacity(0.8), style: StrokeStyle(lineWidth:1)))
+                SecureField("Password", text: $password)
+                    .frame(width: 300, height: 50)
+                    .padding(.horizontal)
+                    .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(.gray.opacity(0.8), style: StrokeStyle(lineWidth: 1)))
+                
+                Button {
+                    print("Login")
+                } label: {
+                    Text("Login")
+                }
+                .frame(width: 300, height: 50)
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
 
-                        }
-                        .alert(alertTitle, isPresented: $showingAlert) {
-                            Button("OK") { }
-                        } message: {
-                            Text(alertMessage)
-                        }
+               
+                HStack {
+                    Text("Don't have an account?")
+                    Button {
+                        print("Sign up page pushed")
+                    } label: {
+                        Text("Sign Up")
+                    }
 
+                }
+                
+                
+            }
         }
-        
-        
+       
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {
